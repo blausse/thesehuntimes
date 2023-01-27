@@ -53,11 +53,11 @@
           Frontend
         </div>
         <v-list-item-title class="text-h5 mb-1">
-          Sehun Kim
+          YoungHyun Kim
         </v-list-item-title>
         <v-list-item-subtitle>JS, vue, React, php, mysql, node.js, firebase, mariaDB...</v-list-item-subtitle>
       </v-list-item-content>
-      <v-list-item-avatar tile size="80"><img src="@/assets/images/sehun.png" alt=""></v-list-item-avatar>
+      <v-list-item-avatar tile size="80"><img src="@/assets/images/young.png" alt=""></v-list-item-avatar>
     </v-list-item>
     <v-card-actions>
       <v-btn outlined rounded text x-small>Join</v-btn>
@@ -72,11 +72,11 @@
           Frontend
         </div>
         <v-list-item-title class="text-h5 mb-1">
-          Sehun Kim
+          MinJi
         </v-list-item-title>
         <v-list-item-subtitle>JS, vue, React, php, mysql, node.js, firebase, mariaDB...</v-list-item-subtitle>
       </v-list-item-content>
-      <v-list-item-avatar tile size="80"><img src="@/assets/images/sehun.png" alt=""></v-list-item-avatar>
+      <v-list-item-avatar tile size="80"><img src="@/assets/images/minji.png" alt=""></v-list-item-avatar>
     </v-list-item>
     <v-card-actions>
       <v-btn outlined rounded text x-small>Join</v-btn>
@@ -91,11 +91,11 @@
           Frontend
         </div>
         <v-list-item-title class="text-h5 mb-1">
-          Sehun Kim
+          Jane
         </v-list-item-title>
         <v-list-item-subtitle>JS, vue, React, php, mysql, node.js, firebase, mariaDB...</v-list-item-subtitle>
       </v-list-item-content>
-      <v-list-item-avatar tile size="80"><img src="@/assets/images/sehun.png" alt=""></v-list-item-avatar>
+      <v-list-item-avatar tile size="80"><img src="@/assets/images/jane.png" alt=""></v-list-item-avatar>
     </v-list-item>
     <v-card-actions>
       <v-btn outlined rounded text x-small>Join</v-btn>
@@ -110,11 +110,11 @@
           Frontend
         </div>
         <v-list-item-title class="text-h5 mb-1">
-          Sehun Kim
+          Boyoung Lee
         </v-list-item-title>
         <v-list-item-subtitle>JS, vue, React, php, mysql, node.js, firebase, mariaDB...</v-list-item-subtitle>
       </v-list-item-content>
-      <v-list-item-avatar tile size="80"><img src="@/assets/images/sehun.png" alt=""></v-list-item-avatar>
+      <v-list-item-avatar tile size="80"><img src="@/assets/images/lee.png" alt=""></v-list-item-avatar>
     </v-list-item>
     <v-card-actions>
       <v-btn outlined rounded text x-small>Join</v-btn>

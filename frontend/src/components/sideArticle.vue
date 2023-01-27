@@ -47,9 +47,9 @@ export default {
         {mainSc:'How FLutter improved your App development process',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'flutter',date:'',caption:"",subject:''},
         {mainSc:'Why Now Is The Time To Invest In Crypto And Blockchain',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'blockchain',date:'',caption:"",subject:''},
       ],
-      sideTop:{mainSc:"The React Framework for Production",subSc1:"Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.",view:"10m READ",src:"next"},
-      sideRow1:{mainSc:"VIM: a free and open-source, screen-based text editor program",subSc1:"",view:"10m READ",src:"vim"},
-      sideRow2:{mainSc:"Why Spring?",subSc1:"",view:"10m READ",src:"spring"}
+      sideTop:{mainSc:"The React Framework for Production",subSc1:"Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"next",date:'',caption:'',subject:''},
+      sideRow1:{mainSc:"VIM: a free and open-source, screen-based text editor program",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"vim",date:'',caption:'',subject:''},
+      sideRow2:{mainSc:"Why Spring?",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"spring",date:'',caption:'',subject:''}
   }},
   methods:{
   
