@@ -19,12 +19,11 @@ export default({
 })
 </script>
 <style>
-@import "@/assets/css/reset.css";
+/* @import "@/assets/css/reset.css"; */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 .v-application nav a{

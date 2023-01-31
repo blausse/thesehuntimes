@@ -16,7 +16,7 @@ app.post('/api/chat', async (req, res) => {
   const {prompt} = req.body;
   const configuration = new Configuration({
     organization: "org-2ZLyNatOGEITBrePfZfYFfhu",
-    apiKey: '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',
+    apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 const response = await openai.createCompletion({
@@ -29,22 +29,9 @@ const response = await openai.createCompletion({
     presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 })
 
-//   const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-//     prompt: prompt,
-//     max_tokens: 100,
-//     // api_key:'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'
-//   },
-//   {
-//     headers: {
-//     'Authorization': 'Bearer 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',
-//     }
-//   }
-//   );
-// console.log(response)
-// return
   res.json(response.data.choices[0].text);
 });
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
 });

@@ -6,6 +6,7 @@ import detailView from '@/views/detailView.vue'
 import themeView from '@/views/themeView.vue'
 import eachView from '@/views/eachView.vue'
 import studyView from '@/views/studyView.vue'
+import EditorTipTap from '@/views/EditorTipTap.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ const routes = [
     name: 'study',
     component: studyView
   },
+  {
+    path:'/jarvis/write/:content',
+    name:'write',
+    component: EditorTipTap
+  }
 ]
 
 const router = new VueRouter({

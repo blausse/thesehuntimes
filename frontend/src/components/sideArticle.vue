@@ -40,16 +40,16 @@ export default {
   data(){
     return{
       opinion:[
-        {mainSc:'Why You Should Choose TypeScript Over JavaScript?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'typescript',date:'',caption:"",subject:''},
-        {mainSc:'Remix로 쉽게 하는 리액트 서버사이드 렌더링',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'3m READ',src:'remix',date:'',caption:"",subject:''},
+        {mainSc:'Why You Should Choose TypeScript Over JavaScript?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'typescript',date:'',caption:"",subject:'front'},
+        {mainSc:'Remix로 쉽게 하는 리액트 서버사이드 렌더링',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'3m READ',src:'remix',date:'',caption:"",subject:'front'},
         {mainSc:'Automate your workflow from idea to production',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'6m READ',src:'git',date:'',caption:"",subject:''},
-        {mainSc:'Why you should care about Docker?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'7m READ',src:'docker',date:'',caption:"",subject:''},
-        {mainSc:'How FLutter improved your App development process',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'flutter',date:'',caption:"",subject:''},
-        {mainSc:'Why Now Is The Time To Invest In Crypto And Blockchain',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'blockchain',date:'',caption:"",subject:''},
+        {mainSc:'Why you should care about Docker?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'7m READ',src:'docker',date:'',caption:"",subject:'to be done'},
+        {mainSc:'How Flutter improved your App development process',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'flutter',date:'',caption:"",subject:''},
+        {mainSc:'Why Now Is The Time To Invest In Crypto And Blockchain',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'blockchain',date:'',caption:"",subject:'back'},
       ],
-      sideTop:{mainSc:"The React Framework for Production",subSc1:"Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"next",date:'',caption:'',subject:''},
-      sideRow1:{mainSc:"VIM: a free and open-source, screen-based text editor program",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"vim",date:'',caption:'',subject:''},
-      sideRow2:{mainSc:"Why Spring?",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"spring",date:'',caption:'',subject:''}
+      sideTop:{mainSc:"The React Framework for Production",subSc1:"Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"next",date:'',caption:'',subject:'front'},
+      sideRow1:{mainSc:"VIM: a free and open-source, screen-based text editor program",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"vim",date:'',caption:'',subject:'reference'},
+      sideRow2:{mainSc:"Why Spring?",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"spring",date:'',caption:'',subject:'back'}
   }},
   methods:{
   

@@ -40,11 +40,11 @@ export default {
   name: 'mainArticle',
   data(){
     return{
-      main:{mainSc:"\"구글의 시대 끝났다\" 평가 나온 Chat GPT...AI 대화가 검색 대체할까",subSc1:"일론 머스크가 투자한 AI 연구소 '오픈AI', GPT-3 기반 Chat GPT 공개",subSc2:"기존 AI 챗봇 압도하는 성능... 대화형 AI가 검색 서비스 대체 평가도",subSc3:"",subSc4:'',view:"10m READ",src:"openAI2",date:'',caption:"chatGPT: Optimizing Language Models for Dialogue",subject:''},
-      sub1:{mainSc:"AI 그림 열풍의 역설...\"AI가 그린 그림 많아질수록 AI 성능은 나빠진다\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:''},
-      sub2:{mainSc:"카카오브레인, AI 아티스트 '칼로' API, 체험판 공개",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:''},
-      sub3:{mainSc:"AI학회, chatGPT 적용 논문 허용할까?",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:''},
-      sub4:{mainSc:"교수, 학생 뺨치는 chatGPT에 놀란 대학가 \"AI 대필 금지\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:''},
+      main:{mainSc:"\"구글의 시대 끝났다\" 평가 나온 Chat GPT...AI 대화가 검색 대체할까",subSc1:"일론 머스크가 투자한 AI 연구소 '오픈AI', GPT-3 기반 Chat GPT 공개",subSc2:"기존 AI 챗봇 압도하는 성능... 대화형 AI가 검색 서비스 대체 평가도",subSc3:"",subSc4:'',view:"10m READ",src:"openAI2",date:'',caption:"chatGPT: Optimizing Language Models for Dialogue",subject:'ai-ml'},
+      sub1:{mainSc:"AI 그림 열풍의 역설...\"AI가 그린 그림 많아질수록 AI 성능은 나빠진다\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
+      sub2:{mainSc:"카카오브레인, AI 아티스트 '칼로' API, 체험판 공개",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
+      sub3:{mainSc:"AI학회, chatGPT 적용 논문 허용할까?",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
+      sub4:{mainSc:"교수, 학생 뺨치는 chatGPT에 놀란 대학가 \"AI 대필 금지\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
   }},
   methods:{
       each(){

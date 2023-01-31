@@ -25,10 +25,10 @@ export default {
   data(){
     return{
       lines:[
-        {mainSc:"TAILWIND CSS",subSc1:"Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"tailwindcss",date:'',caption:"",subject:''},
-        {mainSc:"restAPI",subSc1:"A REST API (also known as RESTful API) is an application programming interface (API or web API) that conforms to the constraints of REST architectural style and allows for interaction with RESTful web services.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"restAPI",date:'',caption:"",subject:''},
-        {mainSc:"JSON",subSc1:"JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"json",date:'',caption:"",subject:''},
-        {mainSc:"PYTHON",subSc1:"Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"python2",date:'',caption:"",subject:''},
+        {mainSc:"TAILWIND CSS",subSc1:"Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"tailwindcss",date:'',caption:"",subject:'front'},
+        {mainSc:"restAPI",subSc1:"A REST API (also known as RESTful API) is an application programming interface (API or web API) that conforms to the constraints of REST architectural style and allows for interaction with RESTful web services.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"restAPI",date:'',caption:"",subject:'back'},
+        {mainSc:"JSON",subSc1:"JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"json",date:'',caption:"",subject:'front'},
+        {mainSc:"PYTHON",subSc1:"Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"python2",date:'',caption:"",subject:'back'},
       ]
   }},
   methods:{

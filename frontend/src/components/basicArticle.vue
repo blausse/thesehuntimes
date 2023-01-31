@@ -22,11 +22,11 @@ export default {
   data(){
     return{
       articles:[
-        {mainSc:"SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte.",subSc1:"npm create svelte@latest my-app",subSc2:"",subSc3:"",subSc4:"",src:"sveltekit",view:"10m READ",date:"January 17, 2023",caption:"",subject:''},
-        {mainSc:"What is JSON Web Token?",subSc1:"Header",subSc2:"",subSc3:"",subSc4:"",src:"jwt",view:"10m READ",date:'January 17, 2023',caption:"",subject:''},
-        {mainSc:"How to build a real-time chatroom with Firebase and React (Hooks)",subSc1:"Scaffolding",subSc2:"",subSc3:"",subSc4:"",src:"firebase",view:"10m READ",date:'January 17, 2023',caption:"",subject:''},
-        {mainSc:"What is JSON Web Token?",subSc1:"Header",subSc2:"",subSc3:"",subSc4:"",src:"aws",view:"10m READ",date:'January 17, 2023',caption:"",subject:''},
-        {mainSc:"What is Postman?",subSc1:"Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.",subSc2:"",subSc3:"",subSc4:"",src:"postman",view:"10m READ",date:'January 17, 2023',caption:"",subject:''},
+        {mainSc:"SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte.",subSc1:"npm create svelte@latest my-app",subSc2:"",subSc3:"",subSc4:"",src:"sveltekit",view:"10m READ",date:"January 17, 2023",caption:"",subject:'to be done'},
+        {mainSc:"What is JSON Web Token?",subSc1:"Header",subSc2:"",subSc3:"",subSc4:"",src:"jwt",view:"10m READ",date:'January 17, 2023',caption:"",subject:'to be done'},
+        {mainSc:"How to build a real-time chatroom with Firebase and React (Hooks)",subSc1:"Scaffolding",subSc2:"",subSc3:"",subSc4:"",src:"firebase",view:"10m READ",date:'January 17, 2023',caption:"",subject:'front'},
+        {mainSc:"What is AWS?",subSc1:"Header",subSc2:"",subSc3:"",subSc4:"",src:"aws",view:"10m READ",date:'January 17, 2023',caption:"",subject:'back'},
+        {mainSc:"What is Postman?",subSc1:"Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.",subSc2:"",subSc3:"",subSc4:"",src:"postman",view:"10m READ",date:'January 17, 2023',caption:"",subject:'to be done'},
         
       ],
   }},
