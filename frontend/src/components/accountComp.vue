@@ -17,7 +17,7 @@
           <v-toolbar-title>Account</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark text @click="dialog = false">
+            <v-btn dark text @click="logIn">
               Log-In
             </v-btn>
           </v-toolbar-items>
@@ -26,11 +26,10 @@
           <v-subheader>User Login</v-subheader>
           <v-list-item>
             <v-list-item-content class="login-box">
-                  <v-text-field label="ID" :rules="rules" hide-details="auto" class="login"></v-text-field>
-                  <v-text-field label="Password" :rules="pwRules" class="login" type="password"></v-text-field>
+                  <v-text-field label="ID" :rules="rules" hide-details="auto" class="login" v-model="id" @keyup.enter="logIn"></v-text-field>
+                  <v-text-field label="Password" :rules="pwRules" class="login" type="password" v-model="pw" @keyup.enter="logIn"></v-text-field>
             </v-list-item-content>
           </v-list-item>
-          <v-btn x-small><v-icon x-small class="google">mdi-google</v-icon>구글 간편 로그인</v-btn>
         </v-list>
         <v-divider></v-divider>
         <v-list three-line subheader>
@@ -50,7 +49,7 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle class="sub-title">아직 회원이 아니신가요?</v-list-item-subtitle>
-              <v-btn class="account-btn">회원가입</v-btn>
+              <signup-comp class="account-btn"></signup-comp>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -60,10 +59,19 @@
 </template>
 
 <script>
+import { getDatabase, ref, onValue} from "firebase/database";
+
+import signupComp from './signupComp.vue'
 export default {
   name: 'modalView',
+  components:{
+    signupComp
+  },
   data(){
     return{
+        id:'',
+        pw:'',
+        userInfo:undefined,
         dialog: false,
         notifications: false,
         sound: true,
@@ -79,7 +87,26 @@ export default {
       ],
   }},
   methods:{
-  
+  logIn(){
+          const db = getDatabase();
+          const userDB = ref(db, 'users/');
+          onValue(userDB, (snapshot) => {
+          const data = snapshot.val();
+          const userData = Object.values(data)
+          var i
+          for(i=0;i<userData.length;i++){
+            if(this.id == userData[i].id && this.pw == userData[i].password){
+              this.userInfo = userData[i]
+              this.$session.set('userInfo',this.userInfo)
+              alert(this.userInfo.name+"님, 환영합니다!")
+              this.dialog = false
+              window.location.reload()
+            }
+          }
+          console.log(this.userInfo)
+          this.userInfo = userData
+        });
+    },
     }
   }
 </script>
@@ -91,7 +118,6 @@ export default {
 .account-btn{margin:auto;}
 .sub-title{margin-bottom:0.5rem;font-size:0.5rem}
 .login-box{display:flex;flex-direction: column;}
-.login{width:50%}
 *:focus{outline:none}
 .modal{width:100%;margin:auto}
 .google{margin-right:1rem}

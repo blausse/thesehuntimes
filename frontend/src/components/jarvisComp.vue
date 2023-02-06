@@ -7,7 +7,7 @@
     <p class="detail-title">relating to or denoting the part of a computer system or application with which the user interacts directly.</p>
   </div>
   </div>
-  <div class="jarvis">
+  <div class="jarvis" v-if="!loading">
     <div v-for="ai,i in chat" :key="i" class="jarvis-history">
       <p class="user"><svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="q-box">{{ai.question}}</span></p>
       <p class="bot">
@@ -15,11 +15,15 @@
         <label class="a-box" id="a-box">{{ai.answer}}<input type="checkbox" label="a-box" :value="ai.answer" v-model="content" class="a-box-check" v-if="choose"></label>
       </p>
     </div>
-    <input class="question" v-model="input" @keyup.enter="generateResponse" @keydown.enter="sendQuestion" placeholder="Ask me anything & Push the enter"/>
+    <input class="question" v-model="input" @keyup.enter="loading=true" @keydown.enter="generateResponse" placeholder="Ask me anything & Push the enter"/>
     <v-btn class="write-btn" @click="Write">Write</v-btn>
     <v-btn class="write-btn" @click="Choose">Choose</v-btn>
   </div>
-  
+  <div v-else class="loading-box">
+    <div class="loadingio-spinner-spinner-9dtbphdu6eq"><div class="ldio-gv27q55ofsi">
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div></div>
+  </div>
 </div>
 </template>
 
@@ -40,7 +44,7 @@ export default {
   },
   methods: {
     generateResponse() {
-      axios.post('http://localhost:3001/api/chat', {
+      axios.post('http://localhost:3000/api/chat', {
         prompt: this.input,
       }).then(response => {
         this.response = response.data;
@@ -56,7 +60,7 @@ export default {
     if(this.content.length == 0){
       alert("Choose plz")
     }else{
-      this.$router.push({name:'write',params:{content:this.content[0]}})
+      this.$router.push({name:'write',params:{content:this.content.toString()}})
     }
    },
 Choose(){
@@ -90,5 +94,85 @@ this.choose=true;
 .theme{font-size:0.6rem;font-weight:bold}
 .detail{font-size:2rem;font-family: "karnakPro-condensedBlack";font-weight:bold;color:#121212;letter-spacing: 1px;}
 
+.loading-box{max-width:1000px;margin:auto;display:flex;justify-content: center;align-items: center;height:300px}
 
+@keyframes ldio-gv27q55ofsi {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
+.ldio-gv27q55ofsi div {
+  left: 94px;
+  top: 48px;
+  position: absolute;
+  animation: ldio-gv27q55ofsi linear 1s infinite;
+  background: #222222;
+  width: 12px;
+  height: 24px;
+  border-radius: 6px / 12px;
+  transform-origin: 6px 52px;
+}.ldio-gv27q55ofsi div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9166666666666666s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -0.8333333333333334s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.75s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.6666666666666666s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.5833333333333334s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.5s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.4166666666666667s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.3333333333333333s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.25s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.16666666666666666s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.08333333333333333s;
+  background: #222222;
+}.ldio-gv27q55ofsi div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+  background: #222222;
+}
+.loadingio-spinner-spinner-9dtbphdu6eq {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ldio-gv27q55ofsi {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-gv27q55ofsi div { box-sizing: content-box; }
 </style>

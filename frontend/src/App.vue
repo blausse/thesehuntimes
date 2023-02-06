@@ -1,25 +1,24 @@
 <template>
   <v-app>
-<headerView></headerView>
+<headerComp></headerComp>
     <v-main>
       <router-view/>
     </v-main>
-  <footerView></footerView>
+  <footerComp></footerComp>
   </v-app>
 </template>
 
 <script>
-import headerView from '@/components/headerView.vue'
-import footerView from '@/components/footerView.vue'
+import headerComp from '@/components/headerComp.vue'
+import footerComp from '@/components/footerComp.vue'
 export default({
   components:{
-    headerView,
-    footerView
+    headerComp,
+    footerComp
   }
 })
 </script>
 <style>
-/* @import "@/assets/css/reset.css"; */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +33,7 @@ export default({
 nav a:hover{
   color:#42b983
 }
-nav a.router-link-exact-active {
+nav a.router-link-active {
   color: #42b983;
 }
 .v-application{padding:0 1rem}

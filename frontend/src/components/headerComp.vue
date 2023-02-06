@@ -5,15 +5,17 @@
       <div class="search-box">
         <svg class="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg><input type="text" class="search-txt" placeholder="Search">
         </div>
-      <div class="date-box"><p class="date">{{todayDate()}}</p></div>
+      <div class="date-box"><p class="date">{{todayDate()}}</p><p class="user">User Counts : {{getData()}}</p>
+      <!-- <p class="user">Article Counts : {{getArticle()}}</p> -->
+      </div>
       <div class="account-box">
-        <modal-view></modal-view>
+        <accountComp v-if="!userInfo"/>
+        <myComp v-else/>
         </div>
-      <div></div>
     </div>
     <div class="mid-header">
       <div class="btn-box"><svg @click="gnb" class="left-bar-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></div>
-      <div class="logo-box"><router-link :to="home.href" class="logo-link"><img src="@/assets/images/logo.svg" alt="the sehun times" class="logo"></router-link></div>
+      <div class="logo-box"><router-link :to="home.href" class="logo-link" exact><img src="@/assets/images/logo.svg" alt="the sehun times" class="logo"></router-link></div>
       <div class="jarvis-box">
         <router-link :to="jarvis.href">
         <img src="@/assets/images/jarvis.png" alt="chatbot ai" class="jarvis">
@@ -28,13 +30,15 @@
       </div>
     </nav>
   </div>
-  <gnbView></gnbView>
+  <gnbComp></gnbComp>
 </div>
 </template>
 
 <script>
-import modalView from "@/components/modalView.vue";
-import gnbView from "@/components/gnbView.vue";
+import { getDatabase, ref, onValue} from "firebase/database";
+import accountComp from "@/components/accountComp.vue";
+import myComp from "@/components/myComp.vue";
+import gnbComp from "@/components/gnbComp.vue";
 export default {
   name: 'headerView',
   data(){
@@ -47,13 +51,10 @@ export default {
       {name: 'Global Trend',href:'GLOBAL TREND'},
       {name: 'Block Chain',href:'BLOCK CHAIN'},
       {name: 'AI-ML',href:'AI-ML'},
-    // {name: 'Developer',href:'/developer'},
-    // {name: 'Global Trend',href:'/global'},
-    // {name: 'Block Chain',href:'/blockchain'},
-    // {name: 'AI-ML',href:'/AIML'},
-    // {name: 'Data Center',href:'/datacenter'},
-    // {name: 'Open Source',href:'/opensource'}
-  ]}},
+  ],
+  userInfo: this.$session.get('userInfo') ? this.$session.get('userInfo') : '',
+  userCount:''
+  }},
   methods:{
     todayDate: function(){
       var date = new Date();
@@ -64,11 +65,32 @@ export default {
     gnb(){
         var side = document.querySelector('.side-box');
         return side.classList.toggle('on');
-    }
+    },
+    getData(){
+          const db = getDatabase();
+          const userDB = ref(db, 'users/');
+          onValue(userDB, (snapshot) => {
+          const data = snapshot.val();
+          const userData = Object.values(data)
+          this.userCount = userData.length
+        });
+      return this.userCount
+    },
+    // getArticle(){
+    //       const db = getDatabase();
+    //       const userDB = ref(db, 'articles/');
+    //       onValue(userDB, (snapshot) => {
+    //       const data = snapshot.val();
+    //       const userData = Object.values(data)
+    //       this.userCount = userData.length
+    //     });
+    //   return this.userCount
+    // },
   },
   components:{
-    modalView,
-    gnbView
+    accountComp,
+    gnbComp,
+    myComp
   }
 }
 </script>
@@ -100,4 +122,11 @@ nav{display:flex;justify-content: space-between;margin:auto;max-width:1000px}
 .left-bar-btn{width:20px;height:20px;cursor:pointer;fill:#2c3e50}
 .on{left:0;}
 
+.user{
+  text-align: center;
+  font-size:0.5rem
+  }
+  .welcome{
+    font-size:0.5rem
+  }
 </style>

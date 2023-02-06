@@ -1,58 +1,79 @@
 <template>
 <div class="main-article">
-  <article class="article-a">
-    <img :src="require(`@/assets/images/${sideTop.src}.png`)" alt="">
-    <div class="main">{{sideTop.mainSc}}</div>
-    <div class="sub">{{sideTop.subSc1}}</div>
-    <p class="view">{{sideTop.view}}</p>
+  <article class="article-a" @click="each(articles[0].postKey)">
+    <img :src="articles[0].preview" alt="">
+    <div class="main">{{articles[0].mainSc}}</div>
+    <div class="sub">{{articles[0].subSc}}</div>
+    <p class="view">{{articles[0].view}} READ</p>
   </article>
   <div class="article-box">
   <article class="article-b">
-  <img :src="require(`@/assets/images/${sideRow1.src}.png`)" alt="">
-    <div class="main">{{sideRow1.mainSc}}</div>
-    <div class="view">{{sideRow1.view}}</div>
+  <img :src="articles[1].preview" alt="" @click="each(articles[1].postKey)">
+    <div class="main">{{articles[1].mainSc}}</div>
+    <div class="view">{{articles[1].view}} READ</div>
   </article>
   <article class="article-c">
-    <img :src="require(`@/assets/images/${sideRow2.src}.png`)" alt="">
-    <div class="main">{{sideRow2.mainSc}}</div>
-    <div class="view">{{sideRow2.view}}</div>
+    <img :src="articles[2].preview" alt="" @click="each(articles[2].postKey)">
+    <div class="main">{{articles[2].mainSc}}</div>
+    <div class="view">{{articles[2].view}} READ</div>
   </article>
 </div>
 <h2>Opinion</h2>
-<article v-for="box,i in opinion" :key="i" class="article-d">
-<div class="opinion-box">
+<article v-for="box,i in articles" :key="i" class="article-d" @click="each(box.postKey)">
+<div class="opinion-box" v-if="i <= 10">
 <div class="main">{{box.mainSc}}</div>
-<div class="view">{{box.view}}</div>
+<div class="view">{{box.view}} READ</div>
 </div>
-<img :src="require(`@/assets/images/${box.src}.png`)" alt="">
+<img class="preview" :src="box.preview" alt="" v-if="i <= 10">
 </article>
 <div class="slide-box">
-<p>slide 제작 예정</p>
+  <h2>Today's Study</h2>
+  <div class="study-card">
+    <img :src="articles[0].preview" class="host-img">
+    {{slides[0]}}
+  </div>
 </div>
 </div>
 </template>
 
 <script>
-
-
+import { getDatabase, ref, onValue} from "firebase/database";
 export default {
   name: 'sideArticle',
+  created(){
+    const db = getDatabase();
+    const articleDB = ref(db,'articles');
+    onValue(articleDB,(snapshot)=>{
+      const data = snapshot.val()
+      const articleData = Object.values(data)
+      var i
+      for(i=0;i<articleData.length;i++){
+        if(articleData[i].theme == 'MORE'){
+          this.articles.push(articleData[i])
+        }
+      }
+    })
+  },
   data(){
     return{
-      opinion:[
-        {mainSc:'Why You Should Choose TypeScript Over JavaScript?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'typescript',date:'',caption:"",subject:'front'},
-        {mainSc:'Remix로 쉽게 하는 리액트 서버사이드 렌더링',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'3m READ',src:'remix',date:'',caption:"",subject:'front'},
-        {mainSc:'Automate your workflow from idea to production',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'6m READ',src:'git',date:'',caption:"",subject:''},
-        {mainSc:'Why you should care about Docker?',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'7m READ',src:'docker',date:'',caption:"",subject:'to be done'},
-        {mainSc:'How Flutter improved your App development process',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'flutter',date:'',caption:"",subject:''},
-        {mainSc:'Why Now Is The Time To Invest In Crypto And Blockchain',subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:'10m READ',src:'blockchain',date:'',caption:"",subject:'back'},
-      ],
-      sideTop:{mainSc:"The React Framework for Production",subSc1:"Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"next",date:'',caption:'',subject:'front'},
-      sideRow1:{mainSc:"VIM: a free and open-source, screen-based text editor program",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"vim",date:'',caption:'',subject:'reference'},
-      sideRow2:{mainSc:"Why Spring?",subSc1:"",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"spring",date:'',caption:'',subject:'back'}
+      articles:[],
+      slides: [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+        ],
   }},
   methods:{
-  
+  each(key){
+        this.$router.push({
+          name:'each',
+          params:{
+            postKey:key
+          }
+        })
+      },
     },
     components:{
       
@@ -70,17 +91,23 @@ img{display:block;width:100%;height:100%;max-height:200px}
 h2{text-align: left;font-weight:bold}
 .article-box{display:flex;padding: 1rem 0;border-bottom:1px solid #121212}
 
-.article-a{border-bottom:1px solid #dfdfdf;display:flex;flex-direction:column;justify-content: space-between;}
+.article-a{border-bottom:1px solid #dfdfdf;display:flex;flex-direction:column;justify-content: space-between;cursor:pointer}
 
-.article-b{display:flex;flex-direction: column;justify-content: space-between;max-height:250px;width:50%;padding-right:1rem}
+.article-b{display:flex;flex-direction: column;justify-content: space-between;max-height:250px;width:50%;padding-right:1rem;cursor:pointer}
 .article-b img{height:100px;}
 
-.article-c{display:flex;flex-direction: column;justify-content: space-between;max-height:250px;border-left:1px solid #dfdfdf;padding-left:1rem;width:50%}
+.article-c{display:flex;flex-direction: column;justify-content: space-between;max-height:250px;border-left:1px solid #dfdfdf;padding-left:1rem;width:50%;cursor:pointer}
 .article-c img{height:100px;}
 
-.article-d{padding: 1rem 0;border-bottom:1px solid #dfdfdf;display:flex;justify-content: flex-end;}
-.article-d img{width:50%}
-.opinion-box{margin-right:1rem;display:flex;flex-direction:column;justify-content: space-between;}
+.article-d{padding: 1rem 0;border-bottom:1px solid #dfdfdf;display:flex;justify-content: flex-end;cursor:pointer}
+.preview{width:50%}
+.opinion-box{margin-right:1rem;display:flex;flex-direction:column;justify-content: space-between;width:100%}
 
-.slide-box{padding:1rem 0;border:1px solid black;display:flex;width:100%}
+.slide-box{width:100%}
+.host-img{
+  width:100%
+  }
+.study-card{
+  padding:1rem 0
+}
 </style>

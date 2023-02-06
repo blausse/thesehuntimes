@@ -1,20 +1,15 @@
 <template>
-<div class="main-article" @click="each">
-    <div class='mainImg'>
-      <picture>
-        <source media="" srcset="">
-        <img :src="require(`@/assets/images/${main.src}.png`)" alt="">
-      </picture>
-    <p class="caption">{{main.caption}}</p>
+<div class="main-article">
+    <div class='mainImg'  @click="each">
+     <img :src="preview" alt=""> 
+    <p class="caption">{{caption}}</p>
     </div>
-    <div class="subSc1">
-      <p v-if="main.mainSc" class="main">{{main.mainSc}}</p>
+    <div class="subSc1"  @click="each">
+      <p class="main">{{mainSc}}</p>
     <ul class="sub">
-      <li v-if="main.subSc1">{{main.subSc1}}</li>
-      <li v-if="main.subSc2">{{main.subSc2}}</li>
-      <li v-if="main.subSc3">{{main.subSc3}}</li>
+      <li>{{subSc}}</li>
       </ul>
-      <p class="view">{{main.view}}</p>
+      <p class="view">{{view}} READ</p>
     </div>
     <div class="subSc2">
       <p class="main">{{sub1.mainSc}}</p>
@@ -36,6 +31,8 @@
 </template>
 
 <script>
+import { getDatabase, ref, onValue} from "firebase/database";
+
 export default {
   name: 'mainArticle',
   data(){
@@ -45,12 +42,81 @@ export default {
       sub2:{mainSc:"카카오브레인, AI 아티스트 '칼로' API, 체험판 공개",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
       sub3:{mainSc:"AI학회, chatGPT 적용 논문 허용할까?",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
       sub4:{mainSc:"교수, 학생 뺨치는 chatGPT에 놀란 대학가 \"AI 대필 금지\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
+      articles:[],
+      preview:'',
+      caption:'',
+      mainSc:'',
+      subSc:'',
+      view:'',
+      postKey:'',
+      beforeParams:'',
   }},
+  props:{
+    theme:String
+    },
+     created(){
+    if(this.$route.params.title){
+    this.getData()
+    }else{
+      const db = getDatabase();
+      const articleDB = ref(db,'articles');
+      onValue(articleDB,(snapshot)=>{
+      const data = snapshot.val()
+      const articleData = Object.values(data)
+      var i
+      for(i=0;i<articleData.length;i++){
+        if(articleData[i].theme == 'AI-ML'){
+          this.articles.push(articleData[i])
+          this.beforeParams = articleData[i].theme
+          this.preview = this.articles[0].preview
+          this.caption = this.articles[0].caption
+          this.mainSc = this.articles[0].mainSc
+          this.subSc = this.articles[0].subSc
+          this.view = this.articles[0].view
+          this.postKey = this.articles[0].postKey
+        }}
+    })
+    }
+  },
+  watch:{ 
+    theme : function(){
+  if(this.$route.params.title){
+    if(this.beforeParams !== this.$route.params.title){
+      this.articles = []
+      return this.getData()
+    }
+  }},
+  },
   methods:{
       each(){
         this.$router.push({
-          path:'/each'
+          name:'each',
+          params:{
+            postKey:this.postKey,
+          }
         })
+      },
+      getData(){
+    const db = getDatabase();
+    const articleDB = ref(db,'articles');
+    onValue(articleDB,(snapshot)=>{
+      const data = snapshot.val()
+      const articleData = Object.values(data)
+      this.nowParams=this.$route.params.title
+      var i
+      for(i=0;i<articleData.length;i++){
+        if(this.$route.params.title == articleData[i].theme){
+          this.articles.push(articleData[i])
+          this.beforeParams = articleData[i].theme
+          this.preview = this.articles[0].preview
+          this.caption = this.articles[0].caption
+          this.mainSc = this.articles[0].mainSc
+          this.subSc = this.articles[0].subSc
+          this.view = this.articles[0].view
+          this.postKey = this.articles[0].postKey
+        }
+      }
+    })
       }
     }
   }

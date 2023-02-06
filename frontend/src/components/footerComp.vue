@@ -7,12 +7,12 @@
       <div v-for="nav in navigators" :key="nav.name" class="nav-item">
         <router-link :to ="{name:'theme',params:{title:nav.name}}" class="nav-link">{{nav.name}}</router-link>
         <ul class="sub-menu">
-<li v-if="nav.sub1"><router-link :to="{name:'detail',params:{subject:nav.sub1,theme:nav.name}}">{{nav.sub1}}</router-link></li>
-          <li v-if="nav.sub2"><router-link :to="{name:'detail',params:{subject:nav.sub2,theme:nav.name}}">{{nav.sub2}}</router-link></li>
-          <li v-if="nav.sub3"><router-link :to="{name:'detail',params:{subject:nav.sub3,theme:nav.name}}">{{nav.sub3}}</router-link></li>
-          <li v-if="nav.sub4"><router-link :to="{name:'detail',params:{subject:nav.sub4,theme:nav.name}}">{{nav.sub4}}</router-link></li>
-          <li v-if="nav.sub5"><router-link :to="{name:'detail',params:{subject:nav.sub5,theme:nav.name}}">{{nav.sub5}}</router-link></li>
-          <li v-if="nav.sub6"><router-link :to="{name:'detail',params:{subject:nav.sub6,theme:nav.name}}">{{nav.sub6}}</router-link></li>
+<li v-if="nav.sub1"><router-link :to="{name:'detail',params:{subject:nav.sub1,title:nav.name}}">{{nav.sub1}}</router-link></li>
+          <li v-if="nav.sub2"><router-link :to="{name:'detail',params:{subject:nav.sub2,title:nav.name}}">{{nav.sub2}}</router-link></li>
+          <li v-if="nav.sub3"><router-link :to="{name:'detail',params:{subject:nav.sub3,title:nav.name}}">{{nav.sub3}}</router-link></li>
+          <li v-if="nav.sub4"><router-link :to="{name:'detail',params:{subject:nav.sub4,title:nav.name}}">{{nav.sub4}}</router-link></li>
+          <li v-if="nav.sub5"><router-link :to="{name:'detail',params:{subject:nav.sub5,title:nav.name}}">{{nav.sub5}}</router-link></li>
+          <li v-if="nav.sub6"><router-link :to="{name:'detail',params:{subject:nav.sub6,title:nav.name}}">{{nav.sub6}}</router-link></li>
         </ul>
       </div>
     </nav>
@@ -72,7 +72,7 @@ export default {
 .footer-box{margin:auto;max-width:1000px}
 
 .logo-box{width:100%;max-width:1000px;margin:auto;text-align: left;}
-.logo-box img{width:30%;}
+.logo-box img{width:30%;margin-right:auto}
 
 .mid-footer{width:100%;max-width:1000px;display:flex;justify-content: space-between;border-bottom:1px solid #dfdfdf;padding-bottom:1rem}
 

@@ -2,14 +2,14 @@
 <div class="side-box">
     <nav class="nav-box">
       <div v-for="nav in navigators" :key="nav.name" class="nav-item">
-        <router-link :to ="{name:'theme',params:{title:nav.name}}" class="nav-link">{{nav.name}}</router-link>
+        <div @click="sideOff"><router-link :to ="{name:'theme',params:{title:nav.name}}" class="nav-link">{{nav.name}}</router-link></div>
         <ul class="sub-menu">
-          <li v-if="nav.sub1"><router-link :to="{name:'detail',params:{subject:nav.sub1,theme:nav.name}}">{{nav.sub1}}</router-link></li>
-          <li v-if="nav.sub2"><router-link :to="{name:'detail',params:{subject:nav.sub2,theme:nav.name}}">{{nav.sub2}}</router-link></li>
-          <li v-if="nav.sub3"><router-link :to="{name:'detail',params:{subject:nav.sub3,theme:nav.name}}">{{nav.sub3}}</router-link></li>
-          <li v-if="nav.sub4"><router-link :to="{name:'detail',params:{subject:nav.sub4,theme:nav.name}}">{{nav.sub4}}</router-link></li>
-          <li v-if="nav.sub5"><router-link :to="{name:'detail',params:{subject:nav.sub5,theme:nav.name}}">{{nav.sub5}}</router-link></li>
-          <li v-if="nav.sub6"><router-link :to="{name:'detail',params:{subject:nav.sub6,theme:nav.name}}">{{nav.sub6}}</router-link></li>
+          <li v-if="nav.sub1" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub1,title:nav.name}}">{{nav.sub1}}</router-link></li>
+          <li v-if="nav.sub2" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub2,title:nav.name}}">{{nav.sub2}}</router-link></li>
+          <li v-if="nav.sub3" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub3,title:nav.name}}">{{nav.sub3}}</router-link></li>
+          <li v-if="nav.sub4" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub4,title:nav.name}}">{{nav.sub4}}</router-link></li>
+          <li v-if="nav.sub5" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub5,title:nav.name}}">{{nav.sub5}}</router-link></li>
+          <li v-if="nav.sub6" @click="sideOff"><router-link :to="{name:'detail',params:{subject:nav.sub6,title:nav.name}}">{{nav.sub6}}</router-link></li>
         </ul>
       </div>
     </nav>
@@ -28,7 +28,7 @@ export default {
     {name: 'GLOBAL TREND',href:'/global',sub1:'Rank of programming language',sub2:'Must do it',sub3:'',sub4:'',sub5:'',sub6:''},
     {name: 'BLOCK CHAIN',href:'/blockchain',sub1:'Definition',sub2:'Crypto',sub3:'Block',sub4:'Hash',sub5:'Mine',sub6:'Bitcoin'},
     {name: 'AI-ML',href:'/aiml',sub1:'Jarvis',sub2:'Tech',sub3:'Open AI',sub4:'',sub5:'',sub6:''},
-    {name: 'MORE',href:'/more',sub1:'System',sub2:'',sub3:'',sub4:'',sub5:'',sub6:''},
+    {name: 'MORE',href:'/more',sub1:'',sub2:'',sub3:'',sub4:'',sub5:'',sub6:''},
     ]
     }},
   methods:{

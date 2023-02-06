@@ -17,10 +17,10 @@
   </div>
   <div class="theme-body">
     <div  class="img-article">
-      <main-article></main-article>
-    <basic-article></basic-article>
+    <main-article :theme="$route.params.title"></main-article>
+    <basic-article :theme="$route.params.title"></basic-article>
     </div>
-    <side-article class="side-article"></side-article>
+    <side-article class="side-article" :theme="$route.params.title"></side-article>
   </div>
 </div>
 </template>
@@ -36,7 +36,7 @@ export default {
   data(){
     return{
       navigators:[
-    {name: 'WEB',href:'/web',sub1:'Front',sub2:'Back',sub3:'Devops',sub4:'Reference',sub5:'To Be Done',sub6:''},
+    {name: 'WEB',href:'/web',sub1:'Front',sub2:'Back',sub3:'Devops',sub4:'Reference',sub5:'To Be Done',theme:''},
     {name: 'SECURITY',href:'/security',sub1:'System',sub2:'Method',sub3:'Type',sub4:'',sub5:'',sub6:''},
     {name: 'GLOBAL TREND',href:'/global',sub1:'Rank of programming language',sub2:'Must do it',sub3:'',sub4:'',sub5:'',sub6:''},
     {name: 'BLOCK CHAIN',href:'/blockchain',sub1:'Definition',sub2:'Crypto',sub3:'Block',sub4:'Hash',sub5:'Mine',sub6:'Bitcoin'},

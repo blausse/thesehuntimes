@@ -6,7 +6,7 @@ import detailView from '@/views/detailView.vue'
 import themeView from '@/views/themeView.vue'
 import eachView from '@/views/eachView.vue'
 import studyView from '@/views/studyView.vue'
-import EditorTipTap from '@/views/EditorTipTap.vue'
+import EditorView from '@/views/EditorView.vue'
 
 Vue.use(VueRouter)
 
@@ -14,16 +14,15 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
   },
   {
     path: '/jarvis',
     name: 'jarvis',
-    // component: () => import('../views/AboutView.vue')
     component: jarvisView
   },
   {
-    path: '/detail/:theme&:subject',
+    path: '/theme/detail/:title&:subject',
     name: 'detail',
     component: detailView
   },
@@ -33,7 +32,7 @@ const routes = [
     component: themeView
   },
   {
-    path: '/each',
+    path: '/each/:postKey&:jarvis',
     name: 'each',
     component: eachView
   },
@@ -45,7 +44,7 @@ const routes = [
   {
     path:'/jarvis/write/:content',
     name:'write',
-    component: EditorTipTap
+    component: EditorView
   }
 ]
 

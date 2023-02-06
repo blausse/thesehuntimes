@@ -46,4 +46,5 @@
 .side{grid-area:b}
 .container{max-width:1024px}
 h2{text-align:left;padding:1rem 0;font-weight:bold}
+
 </style>

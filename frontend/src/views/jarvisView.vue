@@ -1,16 +1,16 @@
 <template>
   <div class="javisView">
-    <jarvis-view></jarvis-view>
+    <jarvis-comp></jarvis-comp>
   </div>
 </template>
 
 <script>
-import jarvisView from '@/components/jarvisView.vue'
+import jarvisComp from '@/components/jarvisComp.vue'
   export default {
     name: 'javisView',
 
     components: {
-      jarvisView
+      jarvisComp
     },
   }
 </script>
