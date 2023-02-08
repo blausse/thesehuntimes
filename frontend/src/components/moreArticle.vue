@@ -68,10 +68,10 @@ export default {
 .subSc5 img{background: #f2f2f2}
 .subSc6{grid-area:g;}
 .subSc6 img{background: #f9f9f9;}
-.flex-column{display:flex;flex-direction:column;justify-content: space-between;}
+.flex-column{display:flex;flex-direction:column;justify-content: space-between;cursor:pointer}
 
 .title{text-align:left;font-weight: bold;}
-img{width:100%;height:100%;display:block;box-shadow: 0 1px 6px 0 #20212447;object-fit:contain}
+img{width:100%;height:100%;display:block;box-shadow: 0 1px 6px 0 #20212447;object-fit:contain;cursor:pointer}
 
 .more-btn{font-weight:bold}
 </style>

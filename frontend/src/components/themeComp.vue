@@ -60,9 +60,9 @@ export default {
 .sub-title{font-size:0.8rem;font-family: "imperial";}
 .theme{font-size:2rem;font-family: "karnakPro-condensedBlack";font-weight:bold;color:#121212;letter-spacing: 1px;text-align:left}
 .theme-body{max-width:1000px;margin:auto;display:flex;padding-top:1rem}
-.img-article{padding-right:1rem;width:70%}
+.img-article{padding-right:1rem;width:70%;border-right:1px solid #dfdfdf}
 
-.side-article{width:30%}
+.side-article{width:30%;padding-left:1rem}
 
 ul{list-style:none;padding:0}
 a{text-decoration:none;}
@@ -71,4 +71,21 @@ a{text-decoration:none;}
 .header-box{border-top:1px solid #ededed;border-bottom:1px solid #121212}
 .sub-menu .link{color:#2e3e50}
 .sub-menu .link:hover{color:#42b983}
+
+/* PC (해상도 1024px)*/
+/* @media all and (min-width:1024px) {} */
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  .theme-body{flex-direction: column;}
+  .img-article{width:100%}
+  .side-article{width:100%}
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+  .theme-body{flex-direction: column;}
+  .img-article{width:100%}
+  .side-article{width:100%}
+}
 </style>

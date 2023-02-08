@@ -1,5 +1,6 @@
 <template>
 <div>
+<div v-if="$session.get('userInfo')">
   <div>
 <div class="detail-header">
     <p class="theme">AI-ML</p>
@@ -25,10 +26,18 @@
 </div></div>
   </div>
 </div>
+<div v-else class="login-need">
+<eachLogComp/>
+<div class="home-box">
+    <v-btn class="home-btn" @click="$router.push({name:'home'})">HOME</v-btn>
+  </div>
+</div>
+</div>
 </template>
 
 <script>
 import axios from 'axios';
+import eachLogComp from '@/components/eachLogComp.vue'
 
 export default {
   data() {
@@ -41,6 +50,9 @@ export default {
       content:[],
       choose:false,
     }
+  },
+  components:{
+    eachLogComp
   },
   methods: {
     generateResponse() {
@@ -73,7 +85,7 @@ this.choose=true;
   }
 }
 </script>
-<style scoped>
+<style lang='scss' scoped>
 .jarvis{position:relative;max-width:1000px;margin:auto;padding-bottom:1rem}
 .jarvis-history{display:flex;flex-direction: column;max-width:1000px;margin:auto;flex-basis:auto;width:auto;text-align:left;}
 .user{width:auto;flex-basis:auto;vertical-align: center;display:flex;align-items:center;padding:0.7rem 0}
@@ -95,6 +107,13 @@ this.choose=true;
 .detail{font-size:2rem;font-family: "karnakPro-condensedBlack";font-weight:bold;color:#121212;letter-spacing: 1px;}
 
 .loading-box{max-width:1000px;margin:auto;display:flex;justify-content: center;align-items: center;height:300px}
+::v-deep{
+.account-sub-box{display:none}
+}
+
+.login-need{width:100%;max-width: 1000px;margin:auto}
+.home-box{height:300px;display:flex;flex-direction:column;justify-content: center;}
+.home-btn{width:50%;margin:auto;max-width:200px}
 
 @keyframes ldio-gv27q55ofsi {
   0% { opacity: 1 }

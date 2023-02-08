@@ -8,7 +8,7 @@
           {{line.mainSc}}
         </div>
         <div class="sub">
-          {{line.subSc}}
+          {{line.subSc1}}
         </div>
         <div class="view">
           {{line.view}} READ
@@ -37,12 +37,6 @@ export default {
   },
   data(){
     return{
-      lines:[
-        {mainSc:"TAILWIND CSS",subSc1:"Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"tailwindcss",date:'',caption:"",subject:'front'},
-        {mainSc:"restAPI",subSc1:"A REST API (also known as RESTful API) is an application programming interface (API or web API) that conforms to the constraints of REST architectural style and allows for interaction with RESTful web services.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"restAPI",date:'',caption:"",subject:'back'},
-        {mainSc:"JSON",subSc1:"JSON is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"json",date:'',caption:"",subject:'front'},
-        {mainSc:"PYTHON",subSc1:"Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.",subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:"python2",date:'',caption:"",subject:'back'},
-      ],
       articles:[]
   }},
   methods:{
@@ -50,7 +44,8 @@ export default {
         this.$router.push({
           name:'each',
           params:{
-            postKey:key
+            postKey:key,
+            jarvis:'a'
           }
         })
       },
@@ -63,8 +58,8 @@ export default {
 .main-article{padding:1rem 0;border-top:1px solid #121212;border-bottom:1px solid #121212}
 .line-box{display:flex;justify-content: space-between;width:100%;padding-left:1rem;border-left:1px solid #dfdfdf;margin-left:0.5rem;height:auto}
 .line{display:flex;min-width:25%;box-sizing: border-box;justify-content: space-between;height:auto;cursor:pointer}
-.line-script{display:flex;flex-direction:column;justify-content: space-between;width:100%;text-align: left;margin:0 1rem;padding-right:1rem}
-.line-script{border-right:1px solid #dfdfdf;}
+.line-script{display:flex;flex-direction:column;justify-content: space-between;width:100%;text-align: left;margin:0 1rem;padding-right:1rem;border-right:1px solid #dfdfdf;}
+
 
 .inner {
   width:10vw;height:10vw;object-fit:cover;max-width:90px;max-height:90px}
@@ -75,4 +70,23 @@ export default {
 .sub{color:#5a5a5a;font-size:0.6rem;max-height:150px;margin-bottom:auto;overflow:hidden;font-family:"imperial"}
 .view{color:#acacac;font-size:0.6rem}
 ::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera*/}
+
+/* PC (해상도 1024px)*/
+/* @media all and (min-width:1024px) {} */
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  .line{display:flex;min-width:0}
+  .inner{display:none}
+  .line-box{border-left:none;padding-left:0;margin-left:0}
+  .line-script{border-right:none;margin:0;padding:0;position: relative;}
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+  .line-box{border-left:none;display:flex;flex-direction: column;gap:0.5rem;padding-left:0;margin-left:0;border-top:1px solid #dfdfdf;padding-top:0.5rem}
+  .line{border-bottom:1px solid #dfdfdf;padding-bottom:0.5rem}
+  .line-script{border-right:none;margin:0;padding:0}
+  .inner{display:none}
+}
 </style>

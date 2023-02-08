@@ -1,18 +1,18 @@
 <template>
   <div class="themeView">
-    <theme-article></theme-article>
+    <theme-comp></theme-comp>
   </div>
 </template>
 
 <script>
-import themeArticle from '@/components/themeArticle.vue'
+import themeComp from '@/components/themeComp.vue'
 
 
   export default {
     name: 'themeView',
 
     components: {
-      themeArticle,
+      themeComp,
     },
   }
 </script>

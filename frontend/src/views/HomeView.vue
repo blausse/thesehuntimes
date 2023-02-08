@@ -42,9 +42,26 @@
   grid-gap:1rem;
   margin-bottom:1rem
 }
-.main{grid-area: a;}
+.main{grid-area: a; border-right:1px solid #dfdfdf;padding-right:1rem}
 .side{grid-area:b}
 .container{max-width:1024px}
 h2{text-align:left;padding:1rem 0;font-weight:bold}
+
+/* PC (해상도 1024px)*/
+/* @media all and (min-width:1024px) {} */
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  .upper_article{
+    display:flex;flex-direction: column;
+  }
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+  .upper_article{
+    display:flex;flex-direction: column;
+  }
+}
 
 </style>

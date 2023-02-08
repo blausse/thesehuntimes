@@ -1,8 +1,10 @@
 <template>
     <div class="editor">
       <ImgModal ref="ytmodal" @onConfirm="addCommand" class="modal"/>
-            <v-col cols="12" class="main-title"><v-text-field label="Main Title" v-model="mainSc"></v-text-field></v-col>
-        <v-col cols="12" class="sub-title"><v-text-field label="Sub Title" v-model="subSc"></v-text-field></v-col>
+        <v-col cols="12" class="main-title"><v-text-field label="Main Title" v-model="mainSc"></v-text-field></v-col>
+        <v-col cols="12" class="sub-title"><v-text-field label="Sub Title1" v-model="subSc1"></v-text-field><v-icon @click="subtitle2=true">mdi-plus</v-icon></v-col>
+        <v-col cols="12" class="sub-title" v-if="subtitle2"><v-text-field label="Sub Title2" v-model="subSc2"></v-text-field><v-icon @click="subtitle3=true">mdi-plus</v-icon><v-icon @click="subtitle2=false">mdi-minus</v-icon></v-col>
+        <v-col cols="12" class="sub-title" v-if="subtitle3"><v-text-field label="Sub Title3" v-model="subSc3"></v-text-field><v-icon @click="subtitle3=false">mdi-minus</v-icon></v-col>
         <editor-menu-bar  :editor="editor" v-slot="{ commands, isActive}">
             <div class="menubar">
                 <button class="menubar__button" :class="{ 'is-active': isActive.bold() }" @click.prevent="commands.bold"><v-icon small color="black">mdi-format-bold</v-icon></button>
@@ -37,7 +39,7 @@
                 </v-container>
             </div>
             <v-col cols="12" class="sub-btn">
-                <v-btn class="sub-btn" @click="previous()">previous</v-btn>
+                <v-btn class="sub-btn prev" @click="previous()">previous</v-btn>
                 <v-btn class="sub-btn" @click="write()">submit</v-btn>
                 </v-col>
         </div>
@@ -54,8 +56,12 @@ export default {
     props: ["description", "menubar", "readOnly"],
     data() {
     return {
+        subtitle2:false,
+        subtitle3:false,
         mainSc:'',
-        subSc:'',
+        subSc1:'',
+        subSc2:'',
+        subSc3:'',
         contents:'',
         theme: 'AI-ML',
         detail: 'Jarvis',
@@ -117,7 +123,11 @@ export default {
                 id:this.$session.get('userInfo').id,
                 name:this.$session.get('userInfo').name,
                 mainSc: this.mainSc,
-                subSc: this.subSc,
+                subSc1: this.subSc1,
+                subSc2: this.subSc2,
+                subSc3: this.subSc3,
+                like:'',
+                save:'',
                 content : contents,
                 date:this.submitDate(),
                 view:this.view,
@@ -146,6 +156,9 @@ export default {
 </script>
 
 <style lang="scss">
+.prev{
+    margin-right:1rem
+}
 .modal{
     z-index:10
 }
@@ -278,6 +291,7 @@ export default {
 
             img {
                 max-width: 100%;
+                max-height:400px;
                 border-radius: 3px;
                 display:block;
                 margin:auto

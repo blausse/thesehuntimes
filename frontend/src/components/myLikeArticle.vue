@@ -19,63 +19,18 @@
 import { getDatabase, ref, onValue} from "firebase/database";
 
 export default {
-  name: 'imgArticle',
+  name: 'myList',
+  created(){
+    this.getData()
+  },
   data(){
     return{
       articles:[],
-      beforeSub:'',
   }},
-  props:{
-    theme:String,
-    subject:String
-  },
-  created(){
-      this.getData()
-      }
-      ,
-  watch:{ 
-  theme :
-  function(){
-  if(this.$route.params.title){
-      this.articles = []
-      return this.getData()
-  }},
-  subject : 
-  function(){
-    this.articles=[]
-    return this.getData()
-  }
-  },
   methods:{
-  getData(){
-    if(!this.$route.params.subject){
-    const db = getDatabase();
-    const articleDB = ref(db,'articles');
-    onValue(articleDB,(snapshot)=>{
-      const data = snapshot.val()
-      const articleData = Object.values(data)
-      var i
-      for(i=0;i<articleData.length;i++){
-        if(this.$route.params.title == articleData[i].theme){
-          this.articles.push(articleData[i])
-        }
-      }
-    })
-    }else{
-    const db = getDatabase();
-    const articleDB = ref(db,'articles');
-    onValue(articleDB,(snapshot)=>{
-      const data = snapshot.val()
-      const articleData = Object.values(data)
-      var i
-      for(i=0;i<articleData.length;i++){
-        if(this.$route.params.title == articleData[i].theme && this.$route.params.subject == articleData[i].detail){
-          this.articles.push(articleData[i])
-        }
-      }
-    })
-    }
-      },
+    back(){
+      history.back()
+    },
       each(key){
         this.$router.push({
           name:'each',
@@ -85,8 +40,22 @@ export default {
           }
         })
       },
+    getData(){
+const db = getDatabase();
+const articleDB = ref(db,'articles');
+onValue(articleDB,(snapshot)=>{
+  const data = snapshot.val();
+  const articleData = Object.values(data)
+  var i
+  for(i=0;i<articleData.length;i++){
+    if(articleData[i].like.includes(this.$session.get('userInfo').id)){
+      this.articles.push(articleData[i])
     }
   }
+})
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

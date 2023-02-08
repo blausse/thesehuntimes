@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div v-if="articles">
 <div class="main-article" v-for="basic,i in articles" :key="i" @click="each(basic.postKey)">
   <div class="date">{{basic.date}}</div>
   <div class="script-box">
@@ -14,6 +15,10 @@
   <div class='mainImg'><img :src="basic.preview" alt=""></div>
 </div>
 </div>
+<div v-else>
+<p>No exist result of search</p>
+</div>
+</div>
 </template>
 <script>
 import { getDatabase, ref, onValue} from "firebase/database";
@@ -22,33 +27,25 @@ export default {
   name: 'imgArticle',
   data(){
     return{
-      articles:[],
-      beforeSub:'',
+      articles:undefined,
+      beforeParams:''
   }},
   props:{
-    theme:String,
-    subject:String
+    content:String
+  },
+  watch:{
+    content : function(){
+if(this.beforeParams !== this.$route.params.content){
+      this.articles = []
+      return this.getData()
+    }
+    }
   },
   created(){
       this.getData()
-      }
-      ,
-  watch:{ 
-  theme :
-  function(){
-  if(this.$route.params.title){
-      this.articles = []
-      return this.getData()
-  }},
-  subject : 
-  function(){
-    this.articles=[]
-    return this.getData()
-  }
-  },
+      },
   methods:{
   getData(){
-    if(!this.$route.params.subject){
     const db = getDatabase();
     const articleDB = ref(db,'articles');
     onValue(articleDB,(snapshot)=>{
@@ -56,26 +53,13 @@ export default {
       const articleData = Object.values(data)
       var i
       for(i=0;i<articleData.length;i++){
-        if(this.$route.params.title == articleData[i].theme){
+        if(articleData[i].mainSc.includes(this.$route.params.content)){
           this.articles.push(articleData[i])
+          this.beforeParams = this.$route.params.content
         }
       }
     })
-    }else{
-    const db = getDatabase();
-    const articleDB = ref(db,'articles');
-    onValue(articleDB,(snapshot)=>{
-      const data = snapshot.val()
-      const articleData = Object.values(data)
-      var i
-      for(i=0;i<articleData.length;i++){
-        if(this.$route.params.title == articleData[i].theme && this.$route.params.subject == articleData[i].detail){
-          this.articles.push(articleData[i])
-        }
-      }
-    })
-    }
-      },
+    },
       each(key){
         this.$router.push({
           name:'each',

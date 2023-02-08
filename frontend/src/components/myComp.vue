@@ -3,8 +3,9 @@
     <v-dialog
       v-model="dialog"
       transition="dialog-on-leave"
-      width="30%"
+      width="100%"
       height="auto"
+      max-width="350"
     >
       <template v-slot:activator="{ on, attrs }">
           <div class="account-sub-box" color="dark" dark v-bind="attrs" v-on="on"><span class="account">My Account</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></div>
@@ -14,7 +15,7 @@
           <v-btn icon dark @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>My Account</v-toolbar-title>
+          <v-toolbar-title class="title">My Account</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn dark text @click="logOut">
@@ -39,7 +40,7 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle class="sub-title">내가 쓴 글을 보고싶다면?</v-list-item-subtitle>
-              <v-btn class="account-btn">My List</v-btn>
+              <v-btn class="account-btn" @click="myList">My List</v-btn>
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
@@ -138,6 +139,12 @@ export default {
           }
         })
       }
+    },
+    myList(){
+      this.$router.push({
+        name:'myList'
+      })
+      this.dialog = false
     }
     }
   }
@@ -154,4 +161,18 @@ export default {
 *:focus{outline:none}
 .modal{width:100%;margin:auto}
 .google{margin-right:1rem}
+.title{font-size:1rem !important}
+
+/* PC (해상도 1024px)*/
+/* @media all and (min-width:1024px) {} */
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+  .account{font-size:0.6rem}
+}
 </style>

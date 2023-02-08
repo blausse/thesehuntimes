@@ -4,7 +4,9 @@
   <div class="script-box">
     <div class='mainSc'>{{img.mainSc}}</div>
     <ul class="subSc">
-      <li>{{img.subSc}}</li>
+      <li v-if="img.subSc1">{{img.subSc1}}</li>
+      <li v-if="img.subSc2">{{img.subSc2}}</li>
+      <li v-if="img.subSc3">{{img.subSc3}}</li>
     </ul>
     <div class="view">{{img.view}} READ</div>
   </div>
@@ -26,6 +28,9 @@ export default {
       for(i=0;i<9;i++){
           this.articles.push(articleData[i])
       }
+      this.articles.sort(function(a,b){
+        return b.view-a.view
+      })
     })
   
   },
@@ -38,7 +43,8 @@ export default {
         this.$router.push({
           name:'each',
           params:{
-            postKey:key
+            postKey:key,
+            jarvis:'a'
           }
         })
       },
@@ -49,7 +55,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-article{display:flex;justify-content: space-between;padding:1rem 0;border-top:1px solid #121212;cursor:pointer}
-.mainImg{width:100%;max-height:300px}
+.mainImg{width:100%;max-height:200px;min-height:100px}
 img{width:100%;height:100%;display:block;}
 .script-box{text-align:left;margin-right:1rem;display:flex;flex-direction: column;justify-content: space-between;width:100%}
 .view{color:#acacac;font-size:0.5rem;}

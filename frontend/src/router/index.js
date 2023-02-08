@@ -7,6 +7,8 @@ import themeView from '@/views/themeView.vue'
 import eachView from '@/views/eachView.vue'
 import studyView from '@/views/studyView.vue'
 import EditorView from '@/views/EditorView.vue'
+import myListView from '@/views/myListView.vue'
+import searchView from '@/views/searchView.vue'
 
 Vue.use(VueRouter)
 
@@ -32,6 +34,7 @@ const routes = [
     component: themeView
   },
   {
+    // path: '/each/:postKey&:jarvis',
     path: '/each/:postKey&:jarvis',
     name: 'each',
     component: eachView
@@ -45,6 +48,16 @@ const routes = [
     path:'/jarvis/write/:content',
     name:'write',
     component: EditorView
+  },
+  {
+    path:'/myList',
+    name:'myList',
+    component: myListView
+  },
+  {
+    path:'/search/:content',
+    name:'search',
+    component: searchView
   }
 ]
 

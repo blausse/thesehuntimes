@@ -18,18 +18,17 @@
     </nav>
     <div class="side-footer">
       <div class="side-top">
-        <p>SUPPORT</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
+        <p>SHTCo</p>
+        <p>Help</p>
+        <p>Contact Us</p>
+        <p>Advertise</p>
+        <p>Site Map</p>
       </div>
       <div class="side-btm">
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
+        <p>Privacy Policy</p>
+        <p>Terms of Service</p>
+        <p>Subscription</p>
+        <p>Work with us</p>
       </div>
     </div>
     </div>
@@ -49,12 +48,12 @@ export default {
     home:{name:'home',href:'/'},
     jarvis:{name:'jarvis',href:'/jarvis'},
     navigators:[
-    {name: 'WEB',href:'/web',sub1:'Front',sub2:'Back',sub3:'Devops',sub4:'Reference',sub5:'To Be Done',sub6:''},
-    {name: 'SECURITY',href:'/security',sub1:'System',sub2:'Method',sub3:'Type',sub4:'',sub5:'',sub6:''},
-    {name: 'GLOBAL TREND',href:'/global',sub1:'Rank of Programming Languages',sub2:'Must do it',sub3:'',sub4:'',sub5:'',sub6:''},
-    {name: 'BLOCK CHAIN',href:'/blockchain',sub1:'Definition',sub2:'Crypto',sub3:'Block',sub4:'Hash',sub5:'Mine',sub6:'Bitcoin'},
-    {name: 'AI-ML',href:'/aiml',sub1:'Jarvis',sub2:'Tech',sub3:'Open AI',sub4:'',sub5:'',sub6:''},
-    {name: 'MORE',href:'/more',sub1:'System',sub2:'',sub3:'',sub4:'',sub5:'',sub6:''},
+    {name: 'WEB',sub1:'Front',sub2:'Back',sub3:'Devops',sub4:'Reference',sub5:'To Be Done',sub6:''},
+    {name: 'SECURITY',sub1:'System',sub2:'Method',sub3:'Type',sub4:'',sub5:'',sub6:''},
+    {name: 'GLOBAL TREND',sub1:'Rank of Programming Languages',sub2:'Must do it',sub3:'',sub4:'',sub5:'',sub6:''},
+    {name: 'BLOCK CHAIN',sub1:'Definition',sub2:'Crypto',sub3:'Block',sub4:'Hash',sub5:'Mine',sub6:'Bitcoin'},
+    {name: 'AI-ML',sub1:'Jarvis',sub2:'Tech',sub3:'Open AI',sub4:'',sub5:'',sub6:''},
+    {name: 'MORE',sub1:'System',sub2:'',sub3:'',sub4:'',sub5:'',sub6:''},
   ],
     footerScs:[
     ]
@@ -81,8 +80,11 @@ export default {
 .nav-link{font-size:0.8rem;}
 
 .side-footer{width:16%;display:flex;flex-direction:column;justify-content: space-between;padding-left:1rem;text-align:left;font-size:0.8rem}
-.side-top{border-bottom:1px solid #dfdfdf;width:100%}
-.side-btm{width:100%}
+.side-top{border-bottom:1px solid #dfdfdf;width:100%;font-size:0.5rem;display:flex;flex-direction:column;gap:0.3rem;padding: 0.3rem 0}
+.side-top p,.side-btm p{cursor:pointer}
+.side-top p:hover,.side-btm p:hover{color:#42b983}
+.side-btm{width:100%;font-size:0.5rem;display:flex;flex-direction: column;gap:0.3rem;padding:0.3rem 0}
+
 
 ul{list-style: none;padding:0}
 .sub-menu{font-size:0.6rem}

@@ -1,31 +1,38 @@
 <template>
 <div class="main-article">
-    <div class='mainImg'  @click="each">
-     <img :src="preview" alt=""> 
-    <p class="caption">{{caption}}</p>
+    <div class='mainImg'  @click="each(articles[0].postKey)">
+     <img :src="articles[0].preview" alt=""> 
+    <p class="caption">{{articles[0].caption}}</p>
     </div>
-    <div class="subSc1"  @click="each">
-      <p class="main">{{mainSc}}</p>
+    <div class="subSc1"  @click="each(articles[0].postKey)">
+      <p class="main">{{articles[0].mainSc}}</p>
     <ul class="sub">
-      <li>{{subSc}}</li>
+      <li v-if="articles[0].subSc1">{{articles[0].subSc1}}</li>
+      <li v-if="articles[0].subSc2">{{articles[0].subSc2}}</li>
+      <li v-if="articles[0].subSc3">{{articles[0].subSc3}}</li>
       </ul>
-      <p class="view">{{view}} READ</p>
+      <p class="view">{{articles[0].view}} READ</p>
     </div>
-    <div class="subSc2">
-      <p class="main">{{sub1.mainSc}}</p>
-      <p class="view">{{sub1.view}}</p>
+    <div class="subSc2" @click="each(articles[1].postKey)">
+      <p class="main">{{articles[1].mainSc}}</p>
+      <ul class="sub">
+      <li v-if="articles[1].subSc1">{{articles[1].subSc1}}</li>
+      <li v-if="articles[1].subSc2">{{articles[1].subSc2}}</li>
+      <li v-if="articles[1].subSc3">{{articles[1].subSc3}}</li>
+      </ul>
+      <p class="view">{{articles[1].view}} READ</p>
     </div>
-    <div class="subSc3">
-      <p class="main">{{sub2.mainSc}}</p>
-      <p class="view">{{sub2.view}}</p>
+    <div class="subSc3" @click="each(articles[2].postKey)">
+      <p class="main">{{articles[2].mainSc}}</p>
+      <p class="view">{{articles[2].view}} READ</p>
     </div>
-    <div class="subSc4">
-      <p class="main">{{sub3.mainSc}}</p>
-      <p class="view">{{sub3.view}}</p>
+    <div class="subSc4" @click="each(articles[3].postKey)">
+      <p class="main">{{articles[3].mainSc}}</p>
+      <p class="view">{{articles[3].view}} READ</p>
     </div>
-    <div class="subSc5">
-      <p class="main">{{sub4.mainSc}}</p>
-      <p class="view">{{sub4.view}}</p>
+    <div class="subSc5" @click="each(articles[4].postKey)">
+      <p class="main">{{articles[4].mainSc}}</p>
+      <p class="view">{{articles[4].view}} READ</p>
     </div>
   </div>
 </template>
@@ -37,19 +44,8 @@ export default {
   name: 'mainArticle',
   data(){
     return{
-      main:{mainSc:"\"구글의 시대 끝났다\" 평가 나온 Chat GPT...AI 대화가 검색 대체할까",subSc1:"일론 머스크가 투자한 AI 연구소 '오픈AI', GPT-3 기반 Chat GPT 공개",subSc2:"기존 AI 챗봇 압도하는 성능... 대화형 AI가 검색 서비스 대체 평가도",subSc3:"",subSc4:'',view:"10m READ",src:"openAI2",date:'',caption:"chatGPT: Optimizing Language Models for Dialogue",subject:'ai-ml'},
-      sub1:{mainSc:"AI 그림 열풍의 역설...\"AI가 그린 그림 많아질수록 AI 성능은 나빠진다\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
-      sub2:{mainSc:"카카오브레인, AI 아티스트 '칼로' API, 체험판 공개",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
-      sub3:{mainSc:"AI학회, chatGPT 적용 논문 허용할까?",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
-      sub4:{mainSc:"교수, 학생 뺨치는 chatGPT에 놀란 대학가 \"AI 대필 금지\"",subSc1:'',subSc2:'',subSc3:'',subSc4:'',view:"10m READ",src:'',date:'',caption:"",subject:'ai-ml'},
       articles:[],
-      preview:'',
-      caption:'',
-      mainSc:'',
-      subSc:'',
-      view:'',
-      postKey:'',
-      beforeParams:'',
+      beforeParams:''
   }},
   props:{
     theme:String
@@ -68,13 +64,10 @@ export default {
         if(articleData[i].theme == 'AI-ML'){
           this.articles.push(articleData[i])
           this.beforeParams = articleData[i].theme
-          this.preview = this.articles[0].preview
-          this.caption = this.articles[0].caption
-          this.mainSc = this.articles[0].mainSc
-          this.subSc = this.articles[0].subSc
-          this.view = this.articles[0].view
-          this.postKey = this.articles[0].postKey
         }}
+        this.articles.sort(function(a,b){
+            return b.view-a.view
+          })
     })
     }
   },
@@ -88,11 +81,12 @@ export default {
   }},
   },
   methods:{
-      each(){
+      each(key){
         this.$router.push({
           name:'each',
           params:{
-            postKey:this.postKey,
+            postKey:key,
+            jarvis:'a'
           }
         })
       },
@@ -108,14 +102,17 @@ export default {
         if(this.$route.params.title == articleData[i].theme){
           this.articles.push(articleData[i])
           this.beforeParams = articleData[i].theme
-          this.preview = this.articles[0].preview
-          this.caption = this.articles[0].caption
-          this.mainSc = this.articles[0].mainSc
-          this.subSc = this.articles[0].subSc
-          this.view = this.articles[0].view
-          this.postKey = this.articles[0].postKey
+          // this.preview = this.articles[0].preview
+          // this.caption = this.articles[0].caption
+          // this.mainSc = this.articles[0].mainSc
+          // this.subSc = this.articles[0].subSc
+          // this.view = this.articles[0].view
+          // this.postKey = this.articles[0].postKey
         }
       }
+      this.articles.sort(function(a,b){
+            return b.view-a.view
+          })
     })
       }
     }

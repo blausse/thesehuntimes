@@ -1,25 +1,32 @@
 <template>
 <div class="main-article">
-  <article class="article-a" @click="each(articles[0].postKey)">
-    <img :src="articles[0].preview" alt="">
-    <div class="main">{{articles[0].mainSc}}</div>
-    <div class="sub">{{articles[0].subSc}}</div>
-    <p class="view">{{articles[0].view}} READ</p>
+  <h2 class='recommand'>Recommand</h2>
+  <article class="article-a" @click="each(sortArticles[0].postKey)">
+    <img :src="sortArticles[0].preview" alt="">
+    <div class="a-box">
+    <div class="main">{{sortArticles[0].mainSc}}</div>
+    <div class="sub">{{sortArticles[0].subSc1}}</div>
+    <p class="view">{{sortArticles[0].view}} READ</p>
+    </div>
   </article>
   <div class="article-box">
   <article class="article-b">
-  <img :src="articles[1].preview" alt="" @click="each(articles[1].postKey)">
-    <div class="main">{{articles[1].mainSc}}</div>
-    <div class="view">{{articles[1].view}} READ</div>
+  <img :src="sortArticles[1].preview" alt="" @click="each(sortArticles[1].postKey)">
+  <div class="a-box">
+    <div class="main">{{sortArticles[1].mainSc}}</div>
+    <div class="view">{{sortArticles[1].view}} READ</div>
+    </div>
   </article>
   <article class="article-c">
-    <img :src="articles[2].preview" alt="" @click="each(articles[2].postKey)">
-    <div class="main">{{articles[2].mainSc}}</div>
-    <div class="view">{{articles[2].view}} READ</div>
+    <img :src="sortArticles[2].preview" alt="" @click="each(sortArticles[2].postKey)">
+    <div class="a-box">
+    <div class="main">{{sortArticles[2].mainSc}}</div>
+    <div class="view">{{sortArticles[2].view}} READ</div>
+    </div>
   </article>
 </div>
 <h2>Opinion</h2>
-<article v-for="box,i in articles" :key="i" class="article-d" @click="each(box.postKey)">
+<article v-for="box,i in normalArticles" :key="i" class="article-d" @click="each(box.postKey)">
 <div class="opinion-box" v-if="i <= 10">
 <div class="main">{{box.mainSc}}</div>
 <div class="view">{{box.view}} READ</div>
@@ -50,13 +57,19 @@ export default {
       for(i=0;i<articleData.length;i++){
         if(articleData[i].theme == 'MORE'){
           this.articles.push(articleData[i])
+          this.normalArticles.push(articleData[i])
         }
       }
+      this.sortArticles = this.articles.sort(function(a,b){
+        return b.view-a.view
+      })
     })
   },
   data(){
     return{
       articles:[],
+      sortArticles:[],
+      normalArticles:[],
       slides: [
           '1',
           '2',
@@ -70,7 +83,8 @@ export default {
         this.$router.push({
           name:'each',
           params:{
-            postKey:key
+            postKey:key,
+            jarvis:'a'
           }
         })
       },
@@ -83,7 +97,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.main-article{padding-left:1rem;border-left:1px solid #dfdfdf;display:flex;flex-direction:column}
+.main-article{display:flex;flex-direction:column}
 img{display:block;width:100%;height:100%;max-height:200px}
 .main{text-align:left;font-size:0.8rem;color:#121212;font-family: "cheltenham";}
 .sub{text-align:left;font-size:0.6rem;color:#5a5a5a;font-family:"imperial"}
@@ -100,7 +114,7 @@ h2{text-align: left;font-weight:bold}
 .article-c img{height:100px;}
 
 .article-d{padding: 1rem 0;border-bottom:1px solid #dfdfdf;display:flex;justify-content: flex-end;cursor:pointer}
-.preview{width:50%}
+.preview{width:50%;min-height:100px}
 .opinion-box{margin-right:1rem;display:flex;flex-direction:column;justify-content: space-between;width:100%}
 
 .slide-box{width:100%}
@@ -109,5 +123,31 @@ h2{text-align: left;font-weight:bold}
   }
 .study-card{
   padding:1rem 0
+}
+.recommand{padding-bottom:1rem}
+
+/* PC (해상도 1024px)*/
+/* @media all and (min-width:1024px) {} */
+
+/* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+  .main-article{
+    border-left:none;padding-left:0;border-top:1px solid black;
+  }
+  .article-a,.article-b,.article-c{
+    display:flex;flex-direction:row-reverse
+  }
+  .article-a{padding-bottom:1rem}
+  .article-a img{width:50%}
+  .article-b img{width:50%}
+  .article-c img{width:50%}
+  .a-box{display:flex;flex-direction: column;justify-content: space-between;}
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+  .main-article{
+    border-left:none;padding-left:0;border-top:1px solid black;
+  }
 }
 </style>

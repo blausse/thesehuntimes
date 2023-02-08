@@ -67,6 +67,12 @@ export default {
   components:{
     signupComp
   },
+  created(){
+    if(!this.$session.get('userInfo')){
+      alert('PLZ LOG IN...')
+      this.dialog = true
+    }
+  },
   data(){
     return{
         id:'',
