@@ -50,7 +50,7 @@ export default {
 .sub-title{font-size:0.8rem;font-family: "imperial";}
 .theme{font-size:0.6rem;font-weight:bold}
 .detail{font-size:2rem;font-family: "karnakPro-condensedBlack";font-weight:bold;color:#121212;letter-spacing: 1px;}
-.detail-body{max-width:1000px;margin:auto;display:flex;padding-top:1rem}
+.detailArticle{max-width:1000px;margin:auto;display:flex;padding-top:1rem}
 .basic-article{padding-right:1rem;width:100%}
 
 .detail-left{width:70%;display:flex;flex-direction: column;border-right:1px solid #dfdfdf}
@@ -66,15 +66,19 @@ export default {
 
 /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
 @media all and (min-width:768px) and (max-width:1023px) {
-  .detail-body{flex-direction: column;}
-  .basic-article{width:100%}
+  .detailArticle{flex-direction: column;}
+  .detail-left{width:100%;border-right:none;}
+  .detail-right{padding-left:0;width:100%}
+  .basic-article{width:100%;padding-right:0}
   .side-article{width:100%}
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
 @media all and (max-width:767px) {
-  .detail-body{flex-direction: column;}
-  .basic-article{width:100%}
+  .detailArticle{flex-direction: column;}
+  .detail-left{width:100%;border-right:none;}
+  .detail-right{padding-left:0;width:100%}
+  .basic-article{width:100%;padding-right:0}
   .side-article{width:100%}
 }
 </style>

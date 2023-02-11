@@ -55,12 +55,18 @@ h2{text-align:left;padding:1rem 0;font-weight:bold}
   .upper_article{
     display:flex;flex-direction: column;
   }
+  .main{
+    border-right:none;padding-right:0
+  }
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
 @media all and (max-width:767px) {
   .upper_article{
     display:flex;flex-direction: column;
+  }
+  .main{
+    border-right:none;padding-right:0
   }
 }
 

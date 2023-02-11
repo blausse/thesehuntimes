@@ -37,7 +37,6 @@
   <h2>Today's Study</h2>
   <div class="study-card">
     <img :src="articles[0].preview" class="host-img">
-    {{slides[0]}}
   </div>
 </div>
 </div>

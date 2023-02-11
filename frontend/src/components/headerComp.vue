@@ -15,7 +15,7 @@
     </div>
     <div class="mid-header">
       <div class="btn-box"><svg @click="gnb" class="left-bar-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></div>
-      <div class="logo-box"><router-link :to="home.href" class="logo-link" exact><img src="@/assets/images/logo.svg" alt="the sehun times" class="logo"></router-link></div>
+      <div class="logo-box"><router-link :to="home.href" class="logo-link" exact><img src="@/assets/images/logo.png" alt="the sehun times" class="logo"></router-link></div>
       <div class="jarvis-box">
         <router-link :to="jarvis.href">
         <img src="@/assets/images/jarvis.png" alt="chatbot ai" class="jarvis">
@@ -105,7 +105,8 @@ nav{display:flex;justify-content: space-between;margin:auto;max-width:1000px}
 .header-wrap{border-bottom:1px solid #000;margin:0 auto 1rem;box-sizing: border-box;width:100%}
 .date{font-size:0.5rem;margin-bottom:0.5rem}
 .jarvis{width:80px;height:50px;cursor:pointer;position: relative;top:10px}
-.logo-box{width:430px;margin:auto}
+.logo-box{width:430px;margin:auto;display:flex;justify-content: center;align-items: center;}
+.logo-link{display:flex;justify-content: center;align-items: center;}
 .mid-header{display:flex;align-items: center;}
 .btn-box{width:80px;text-align: left;padding-top:0.5rem; box-sizing: border-box;}
 
@@ -139,10 +140,17 @@ nav{display:flex;justify-content: space-between;margin:auto;max-width:1000px}
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
-@media all and (max-width:767px) {
+@media all and (min-width:540px) and (max-width:767px) {
   .search-txt:focus{width:80px}
   .logo{max-width:250px}
   .logo-box{width:250px}
+  .jarvis{width:50px;height:30px}
+  .btn-box{width:50px}
+}
+@media all and (max-width:539px){
+  .search-txt:focus{width:50px}
+  .logo{max-width:150px}
+  .logo-box{width:150px}
   .jarvis{width:50px;height:30px}
   .btn-box{width:50px}
 }

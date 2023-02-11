@@ -156,7 +156,7 @@ export default {
 .account-sub-box{display:flex;align-items:center;}
 .account-btn{margin:auto;}
 .sub-title{margin-bottom:0.5rem;font-size:0.5rem}
-.login-box{display:flex;flex-direction: column;}
+.login-box{display:flex;}
 .login{width:70%}
 *:focus{outline:none}
 .modal{width:100%;margin:auto}

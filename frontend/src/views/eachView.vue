@@ -305,7 +305,14 @@ export default {
 
 .each-btnbox{
   display:flex;max-width:500px;margin: 1rem auto;
-  #btn{margin-right:1rem;box-sizing: border-box;padding:1rem;background: #fff;box-shadow:none;border:1px solid #c9c9c9;border-radius:20px}
+  #btn{margin-right:1rem;box-sizing: border-box;padding:1rem;background: #fff;box-shadow:none;border:1px solid #c9c9c9;border-radius:20px;
+  @media all and (max-width:500px) {
+  margin-right:0
+}
+  }
+  @media all and (max-width:500px) {
+  width:100%;justify-content: space-between;
+}
   }
   
 
@@ -397,5 +404,7 @@ export default {
                     font-weight: bold;
                     text-align: left;
                 }
-            }}
+            }
+            }
+            
 </style>

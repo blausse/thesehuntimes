@@ -1,12 +1,17 @@
 <template>
   <div class="modal" v-if="show">
     <div class="modal-content">
+      <div class="modal-title">
       <h1>Add image</h1>
+      <v-icon class="close" @click="show=false">mdi-close</v-icon>
+      </div>
+      <p v-if="loading">Uploading...</p>
       <div>
         <label for="up">input upload:</label>
           <v-col cols="12"><v-text-field label="Caption" v-model="caption"></v-text-field></v-col>
           <v-col cols="12"><v-checkbox label="This image will be preview" v-model="preview"></v-checkbox></v-col>
         <input type="file" @change="create" id="up" ref="file" />
+        
       </div>
     </div>
   </div>
@@ -25,6 +30,7 @@ export default {
       caption:'',
       command: null,
       show: false,
+      loading: false
     };
   },
   computed: {
@@ -65,11 +71,13 @@ export default {
                 };
                 this.$emit("onConfirm", data);
                 }
+                this.loading=false
                 this.closeModal();
             });
     });
 },
     create (event) {
+      this.loading=true
       this.uploadValue=0;
       this.img1=null;
       this.imageData = event.target.files[0];
@@ -106,5 +114,12 @@ export default {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
+}
+.modal-title{
+  display:flex;justify-content: space-between;
+}
+.close{
+  position: relative;
+  top:-15px
 }
 </style>

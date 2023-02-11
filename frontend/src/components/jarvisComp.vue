@@ -56,8 +56,8 @@ export default {
   },
   methods: {
     generateResponse() {
-      axios.post('http://localhost:3000/api/chat', {
-        prompt: this.input,
+      axios.post('https://us-central1-thesehuntimes-backend.cloudfunctions.net/gpt/api/chat',{
+        prompt: this.input
       }).then(response => {
         this.response = response.data;
         this.chat.push({question:this.input,answer:this.response})

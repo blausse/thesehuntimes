@@ -37,4 +37,21 @@ nav a.router-link-active {
   color: #42b983;
 }
 .v-application{padding:0 1rem}
+
+@font-face{
+  font-family:"cheltenham";
+  src: url("assets/fonts/Cheltenham Regular.ttf");
+}
+@font-face{
+  font-family:"chomsky";
+  src: url("assets/fonts/Chomsky.otf");
+}
+@font-face{
+  font-family:"imperial";
+  src: url("assets/fonts/ImperialBT-Roman.otf");
+}
+@font-face{
+  font-family:"karnakPro-condensedBlack";
+  src: url("assets/fonts/KarnakPro-CondensedBlack.ttf");
+}
 </style>

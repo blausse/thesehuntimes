@@ -89,7 +89,7 @@ export default {
 .detail-body{max-width:1000px;margin:auto;display:flex;padding-top:1rem;width:100%}
 .basic-article{padding-right:1rem;width:100%}
 
-.detail-left{width:70%;display:flex;flex-direction:column;border-right:1px solid #dfdfdf}
+.detail-left{width:70%;display:flex;flex-direction:column;border-right:1px solid #dfdfdf;}
 .detail-right{width:30%;padding-left:1rem}
 
 .btn-box{display:flex;gap:1rem}
@@ -104,15 +104,19 @@ export default {
 
 /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
 @media all and (min-width:768px) and (max-width:1023px) {
-  .detail-body{flex-direction: column;}
-  .basic-article{width:100%}
+  .detailArticle{flex-direction: column;}
+  .detail-left{width:100%;border-right:none;}
+  .detail-right{width:100%;padding-left:0}
+  .basic-article{width:100%;padding-right:0}
   .side-article{width:100%}
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
 @media all and (max-width:767px) {
-  .detail-body{flex-direction: column;}
-  .basic-article{width:100%}
+  .detailArticle{flex-direction: column;}
+  .detail-left{width:100%;border-right:none}
+  .detail-right{width:100%;padding-left:0}
+  .basic-article{width:100%;padding-right:0}
   .side-article{width:100%}
 }
 </style>

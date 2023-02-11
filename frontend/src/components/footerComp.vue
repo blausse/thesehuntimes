@@ -1,7 +1,7 @@
 <template>
 <div class="footer-wrap">
   <div class="footer-box">
-  <div class="logo-box"><img :src="require(`@/assets/images/logo.svg`)" alt=""></div>
+  <div class="logo-box"><img :src="require(`@/assets/images/logo.png`)" alt=""></div>
   <div class="mid-footer">
     <nav class="nav-box">
       <div v-for="nav in navigators" :key="nav.name" class="nav-item">
@@ -67,7 +67,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.footer-wrap{border-top:1px solid #121212;padding:1rem 0;}
+.footer-wrap{border-top:1px solid #121212;padding:1rem 0;margin-top:1rem}
 .footer-box{margin:auto;max-width:1000px}
 
 .logo-box{width:100%;max-width:1000px;margin:auto;text-align: left;}

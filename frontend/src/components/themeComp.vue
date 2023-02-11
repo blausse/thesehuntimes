@@ -78,14 +78,14 @@ a{text-decoration:none;}
 /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
 @media all and (min-width:768px) and (max-width:1023px) {
   .theme-body{flex-direction: column;}
-  .img-article{width:100%}
-  .side-article{width:100%}
+  .img-article{width:100%;border-right:none;padding-right:0}
+  .side-article{width:100%;padding-left:0}
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
 @media all and (max-width:767px) {
   .theme-body{flex-direction: column;}
-  .img-article{width:100%}
-  .side-article{width:100%}
+  .img-article{width:100%;border-right:none;padding-right:0}
+  .side-article{width:100%;padding-left:0}
 }
 </style>
