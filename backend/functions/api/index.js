@@ -10,7 +10,7 @@ app.post("/api/chat", async (req, res) => {
     const {prompt} = req.body;
     const configuration = new Configuration({
       organization: "org-2ZLyNatOGEITBrePfZfYFfhu",
-      apiKey: "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",
+      apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
   const response = await openai.createCompletion({
